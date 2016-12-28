@@ -1,0 +1,26 @@
+
+
+- name: create folder for JAVA 8 downloading
+  sudo: yes
+  file: path={{download_folder}} state=directory mode=0755
+
+- name: download JAVA 8
+  sudo: yes
+  command: "wget -q -O {{java_archive_java_8}} --no-check-certificate --no-cookies --header 'Cookie: oraclelicense=accept-securebackup-cookie' {{download_url_java_8}} creates={{java_archive_java_8}}"
+
+
+- name: Unpack JAVA 8archive
+  sudo: yes
+  command: "tar -zxf {{java_archive_java_8}} -C {{download_folder}} "
+  #creates={{java_name}}
+
+- name: set JAVA_HOME
+  sudo: yes
+  lineinfile: dest=/etc/bashrc line="export JAVA_HOME=/opt/jdk1.8.0_111"
+
+- name: add JAVA_HOME to PATH
+  sudo: yes
+  lineinfile: dest=/etc/bashrc line="export PATH=${JAVA_HOME}/bin:${PATH}"
+
+
+

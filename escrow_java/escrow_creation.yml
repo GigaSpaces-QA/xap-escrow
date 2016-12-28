@@ -1,0 +1,25 @@
+---
+# This playbook deploys new newman agents
+
+- name: "create ec2 instance with test role"
+  hosts: localhost
+  connection: local
+  roles:
+
+    - agent_instance_creation_ec2
+
+
+
+- name: "installations & xap cloning on escrow machines"
+  hosts: EscrowMachines
+  remote_user: "{{username}}"
+
+  roles:
+   - prerequisits_install
+   - xap_clone_and_config
+   - java_install
+   - maven_install
+   #- xap_install
+
+
+

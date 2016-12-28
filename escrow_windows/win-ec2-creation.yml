@@ -1,0 +1,10 @@
+---
+- name: Operations on localhost
+  hosts: localhost
+  connection: local
+  gather_facts: False
+
+  roles:
+      - create_security_group
+      - create_win_ec2_server
+

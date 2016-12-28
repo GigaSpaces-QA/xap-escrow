@@ -1,0 +1,36 @@
+# git parameters
+githubuser: <your github user name>
+githubpassword: <your github password>
+gittag: <tag / brunch name of source code for escrow disk>
+
+
+
+key_name: ec2-xap-newman                                    #Amazon EC2 key name - uses public–key cryptography to encrypt and decrypt login information
+region: eu-central-1                                        #Amazon EC2 your hosted location
+security_group: sg-bddbf7d5                                 #Amazon EC2 security group for your test machines. A security group acts as a virtual firewall that controls the traffic for one or more instances
+#image: ami-58c60237                                        #An Amazon Machine Image (AMI) for your tests servers/clients
+image: ami-e4c63e8b                                         # An Amazon Machine public Image (AMI) - RHEL-7.3_HVM_GA-20161026-x86_64-1-Hourly2-GP2
+
+
+instance_type_of_servers: m4.xlarge                         #Amazon EC2 Instance Type - your machine "hardware" description - combinations of CPU, memory, storage, and networking capacity
+vpc_id: vpc-549ec93d                                        # id of Amazon logically isolated virtual network in the AWS cloud for your hosting
+vpc_subnet_id: subnet-93521de8                              # subnet id of Amazon logically isolated virtual network in the AWS cloud for your hosting
+security_group_name: default
+instance_count: 1                                           # number of servers that will be created as a part Many Clients test by "mc_run.sh" command
+
+username: ec2-user                                           #machine username
+pem_location: /home/boaz/Documents/keys/ec2-xap-newman.pem   # Location of Amazon EC2 public–key on a machine that starts Many Clients test executing
+
+download_folder: /opt                                        #folder for JAVA and MAVEN install and download
+
+download_url_java_8: http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.tar.gz
+java_archive_java_8: "{{download_folder}}/java_8.tar.gz"
+
+download_url_maven: http://apache.spd.co.il/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+maven_archive: "{{download_folder}}/maven-3.3.9-bin.tar.gz"
+
+XAP_VERSION: 12.0.1        # this variable is used in xap_install role (responsible for source compilation) that by default disabled in escrow_creation.yml
+MILESTONE: ga              # this variable is used in xap_install role (responsible for source compilation) that by default disabled in escrow_creation.yml
+XAP_BUILD_NUMBER: 16600    # this variable is used in xap_install role (responsible for source compilation) that by default disabled in escrow_creation.yml
+
+

@@ -1,0 +1,21 @@
+---
+# here we insrtall applications that will used in the next stages of script: wget, git, unzip and nano editor (for comfortable editig and file reviewing manually)
+
+- name: install wget
+  sudo: yes
+  yum: name=wget state=latest
+
+- name: Install git
+  sudo: yes
+  yum: name=git state=latest
+
+- name: install unzip
+  sudo: yes
+  yum: name=unzip state=latest
+
+- name: install nano
+  sudo: yes
+  yum: name=nano state=latest
+
+
+

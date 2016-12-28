@@ -1,0 +1,4 @@
+---
+# this is a workaround of ansible problem, ansible can't build in one line variable that composed from so many parts"
+
+BUILD_FULL_NAME: "{{XAP_VERSION}}-{{MILESTONE}}-b{{XAP_BUILD_NUMBER}}"

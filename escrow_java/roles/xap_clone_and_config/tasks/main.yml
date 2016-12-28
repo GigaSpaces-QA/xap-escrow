@@ -1,0 +1,38 @@
+---
+# clone from git of xap open , xap premium and trid parties applications
+# configuration changes for XAP project creation from disk (without git using)
+
+- name: clone xap open from git
+  git:
+    repo: 'https://github.com/xap/xap.git'
+    dest: /home/{{username}}/xap
+    version: '{{gittag}}'
+
+- name: clone xap primery from git
+  git:
+    repo: 'https://{{ githubuser }}:{{ githubpassword }}@github.com/Gigaspaces/xap-premium.git'
+    dest: /home/{{username}}/xap-premium
+    version:  '{{gittag}}'
+
+- name: clone xap third party
+  git:
+    repo: 'https://{{ githubuser }}:{{ githubpassword }}@github.com/Gigaspaces/xap-third-parties.git'
+    dest: /home/{{username}}/xap-third-parties
+
+- name: change /xap/xap-dist/pom.xml to use local sigar-1.6.5-bin.zip
+  replace:
+    dest: /home/{{username}}/xap/xap-dist/pom.xml
+    regexp: '<url>https://github.com/Gigaspaces/xap-third-parties/raw/master/sigar-1.6.5-bin.zip</url>'
+    replace: '<url>file:///${basedir}/../../xap-third-parties/sigar-1.6.5-bin.zip</url>'
+
+- name: change /xap-premium/xap-dist/pom.xml to use local apache-maven-3.2.5-bin.zip
+  replace:
+    dest: /home/{{username}}/xap-premium/xap-dist/pom.xml
+    regexp: '<url>https://github.com/Gigaspaces/xap-third-parties/raw/master/apache-maven-3.2.5-bin.zip</url>'
+    replace: '<url>file:///${basedir}/../../xap-third-parties/apache-maven-3.2.5-bin.zip</url>'
+
+- name: change /xap-premium/xap-dist/pom.xml to use local winmon.zip
+  replace:
+    dest: /home/{{username}}/xap-premium/xap-dist/pom.xml
+    regexp: '<url>https://github.com/Gigaspaces/xap-third-parties/raw/master/winmon.zip</url>'
+    replace: '<url>file:///${basedir}/../../xap-third-parties/winmon.zip</url>'

@@ -1,0 +1,21 @@
+---
+#- name: ensure application dir exists
+#  win_file:
+#    path: c:\test
+#    state: directory
+
+#- name: Copy hosts file
+#  win_copy:
+#    src: hosts
+#    dest: C:\Windows\System32\drivers\etc
+
+- name: Copy dotnetfx35.exe file
+  win_copy:
+    src:  ./files/dotnetfx35.exe
+    dest: C:\test
+
+- name: Copy dotnetfx35.exe file
+  win_copy:
+    src:  ./files/dotNetFx40_Full_x86_x64.exe
+    dest: C:\test
+

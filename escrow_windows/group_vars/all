@@ -1,0 +1,13 @@
+region: eu-central-1                                        #Amazon EC2 your hosted location
+security_group: sg-bddbf7d5                                 #Amazon EC2 security group for your test machines. A security group acts as a virtual firewall that controls the traffic for one or more instances
+#image: ami-99d410f6                                        #windows server 2008 base free image
+image: ami-53eb283c                                         #windows server 2008 xap-dotnet builder image (includes all needed for xap-dotnet compilatyion applications)
+
+instance_type_of_servers: t2.micro
+vpc_id: vpc-549ec93d                                        # id of Amazon logically isolated virtual network in the AWS cloud for your hosting
+vpc_subnet_id: subnet-93521de8                              # subnet id of Amazon logically isolated virtual network in the AWS cloud for your hosting
+security_group_name: default
+instance_count: 1                                           # number of servers that will be created as a part Many Clients test by "mc_run.sh" command
+
+
+

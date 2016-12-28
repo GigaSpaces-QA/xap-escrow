@@ -1,0 +1,15 @@
+---
+
+
+- name: Installing xap open
+  shell: "mvn -Dmaven.repo.local=/home/{{username}}/.m2_one_xap -f xap/pom.xml -B -T 1C clean install -Dxap.version={{XAP_VERSION}} -Dxap.milestone={{MILESTONE}} -Dxap.build.number={{XAP_BUILD_NUMBER}} -DskipTests"
+
+- name: Installing xap premium
+  shell: "mvn -Dmaven.repo.local=/home/{{username}}/.m2_one_xap -f xap-premium/pom.xml -B -T 1C clean install -Dxap.version={{XAP_VERSION}} -Dxap.milestone={{MILESTONE}} -Dxap.build.number={{XAP_BUILD_NUMBER}} -P quick_web_ui_build -DskipTests"
+
+- name: zip creation
+  shell: "mvn -Dmaven.repo.local=/home/{{username}}/.m2_one_xap -f xap-premium/xap-dist/pom.xml process-sources -Dxap.version={{XAP_VERSION}} -Dxap.milestone={{MILESTONE}} -Dxap.build.number={{XAP_BUILD_NUMBER}}  -P generate-zip -DskipTests"
+
+- name: exctract xap premium
+  unarchive: src="/home/{{username}}/xap-premium/xap-dist/target/gigaspaces-xap-premium-{{BUILD_FULL_NAME}}.zip" dest=/home/{{username}} mode=0777 copy=no owner={{username}} group={{username}}
+

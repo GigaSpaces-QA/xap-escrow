@@ -1,0 +1,15 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+
+/escrow_java/group_vars/all
+/escrow_windows/win-escrow-run.sh
+/escrow_java/deploy-escrow-run.sh
+/escrow_windows/files/
