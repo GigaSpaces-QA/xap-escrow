@@ -2,22 +2,35 @@
 # clone from git of xap open , xap premium and trid parties applications
 # configuration changes for XAP project creation from disk (without git using)
 
+
+
+- name: copy ssh privet key to connect to github
+  sudo: yes
+  copy: src=id_rsa dest=/home/{{username}}/.ssh  owner={{username}} mode=0600
+
+#- name: copy ssh /home/boaz/.ssh/known_hosts to connect to github
+#  sudo: yes
+#  copy: src=/home/boaz/.ssh/known_hosts dest=/home/{{username}}/.ssh  owner={{username}} mode=0600
+
 - name: clone xap open from git
   git:
-    repo: 'https://github.com/xap/xap.git'
+    repo: 'git@github.com:xap/xap.git'
     dest: /home/{{username}}/xap
     version: '{{gittag}}'
+    accept_hostkey: yes
 
-- name: clone xap primery from git
+- name: clone xap premium from git
   git:
-    repo: 'https://{{ githubuser }}:{{ githubpassword }}@github.com/Gigaspaces/xap-premium.git'
+    repo: 'git@github.com:Gigaspaces/xap-premium.git'
     dest: /home/{{username}}/xap-premium
-    version:  '{{gittag}}'
+    version: '{{gittag}}'
+    accept_hostkey: yes
 
 - name: clone xap third party
   git:
-    repo: 'https://{{ githubuser }}:{{ githubpassword }}@github.com/Gigaspaces/xap-third-parties.git'
+    repo: 'git@github.com:Gigaspaces/xap-third-parties.git'
     dest: /home/{{username}}/xap-third-parties
+    accept_hostkey: yes
 
 - name: change /xap/xap-dist/pom.xml to use local sigar-1.6.5-bin.zip
   replace:

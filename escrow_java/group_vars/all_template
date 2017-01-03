@@ -1,6 +1,4 @@
 # git parameters
-githubuser: <your github user name>
-githubpassword: <your github password>
 gittag: <tag / brunch name of source code for escrow disk>
 
 

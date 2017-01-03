@@ -13,3 +13,6 @@ gen
 /escrow_windows/win-escrow-run.sh
 /escrow_java/deploy-escrow-run.sh
 /escrow_windows/files/
+/escrow_java/roles/xap_clone_and_config/files/id_escrow_rsa
+/escrow_java/roles/xap_clone_and_config/files/id_rsa
+/escrow_java/escrow_creation.retry
